@@ -1,0 +1,469 @@
+/* 重置和基础变量 */
+:root {
+    --primary-color: #3B82F6;
+    --primary-dark: #2563EB;
+    --primary-light: #60A5FA;
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #1c5cb8;
+    --border: #E2E8F0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --radius-sm: 0.375rem;
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+}
+
+/* 全局样式 */
+body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 头部样式 */
+.site-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.025em;
+    position: relative;
+    cursor: default;
+}
+
+.header-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    transition: width 0.3s ease;
+}
+
+.header-container h1:hover::after {
+    width: 100%;
+}
+
+/* 按钮样式 */
+.view-gallery-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
+}
+
+.view-gallery-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 上传区域样式 */
+.upload-area {
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-area:hover, .upload-area.dragover {
+    border-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--surface), rgba(59, 130, 246, 0.05));
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 6px rgba(59, 130, 246, 0.2));
+}
+
+/* 上传详情区域样式 */
+.upload-details {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* 日期选择器样式 */
+.date-picker {
+    margin-bottom: 1.5rem;
+}
+
+.date-picker label, .note-input label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+}
+
+.date-picker label i, .note-input label i {
+    color: var(--primary-color);
+}
+
+.date-picker input[type="date"] {
+    width: 100%;
+    padding: 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--background);
+    transition: all 0.3s ease;
+}
+
+.date-picker input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+/* 备注输入区域样式 */
+.note-input textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--background);
+    resize: vertical;
+    transition: all 0.3s ease;
+}
+
+.note-input textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.note-input textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* 悬停效果 */
+.date-picker input[type="date"]:hover,
+.note-input textarea:hover {
+    border-color: var(--primary-light);
+    background: linear-gradient(to bottom, var(--surface), var(--background));
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .upload-details {
+        padding: 1.5rem;
+    }
+    
+    .date-picker input[type="date"],
+    .note-input textarea {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
+}
+
+/* 动画效果 */
+.upload-details {
+    animation: slideInUp 0.5s ease;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 照片展示区域 */
+#photoGallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 30px;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+/* 照片卡片样式 */
+.photo-post {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    margin-bottom: 0;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-post-content {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.photo-post-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.photo-post:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.photo-post:hover .photo-post-content img {
+    transform: scale(1.05);
+}
+
+/* 上传成功提示 */
+.upload-success {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+/* 动画定义 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(1rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* 响应式布局 */
+@media (max-width: 1200px) {
+    .photo-post {
+        flex: 0 0 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+    
+    .photo-post-content {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    #photoGallery {
+        gap: 20px;
+    }
+    
+    .photo-post {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .photo-post-content {
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-post-content {
+        height: 300px;
+    }
+}
+
+/* 预览区域样式 */
+.preview-area {
+    width: 100%;
+    padding: 1rem;
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.preview-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.preview-item:hover img {
+    transform: scale(1.05);
+}
+
+.preview-remove {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.preview-item:hover .preview-remove {
+    opacity: 1;
+}
+
+.preview-remove:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* 预览区域操作按钮 */
+.preview-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.upload-action-btn, .cancel-action-btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.upload-action-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.cancel-action-btn {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.upload-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cancel-action-btn:hover {
+    background: var(--background);
+    border-color: var(--primary-light);
+}
+
+/* 响应式调整 */
+@media (max-width: 640px) {
+    .preview-actions {
+        flex-direction: column;
+    }
+    
+    .upload-action-btn, .cancel-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

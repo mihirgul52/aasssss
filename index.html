@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的照片墙</title>
+    <link rel="stylesheet" href="gallery-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1><i class="fas fa-images"></i> 我的照片墙</h1>
+            <nav>
+                <a href="upload.html" class="upload-btn">
+                    <i class="fas fa-cloud-upload-alt"></i> 上传照片
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="timeline-container">
+        <div class="timeline-header">
+            <div class="search-bar">
+                <div class="action-bar">
+                    <div class="select-all">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll">全选</label>
+                    </div>
+                    <button id="downloadBtn" class="download-btn" disabled>
+                        <i class="fas fa-download"></i> 下载选中照片
+                    </button>
+                </div>
+                <div class="date-range">
+                    <div class="date-input">
+                        <label><i class="fas fa-calendar-alt"></i> 开始日期</label>
+                        <input type="date" id="startDate">
+                    </div>
+                    <div class="date-input">
+                        <label><i class="fas fa-calendar-alt"></i> 结束日期</label>
+                        <input type="date" id="endDate">
+                    </div>
+                    <div class="search-buttons">
+                        <button id="searchBtn">
+                            <i class="fas fa-search"></i> 搜索
+                        </button>
+                        <button id="resetBtn">
+                            <i class="fas fa-redo"></i> 重置
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-stats">
+                <div class="stat-item">
+                    <i class="fas fa-image"></i>
+                    <span id="photoCount">0</span>
+                    <span>张照片</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-calendar"></i>
+                    <span id="dateCount">0</span>
+                    <span>个日期</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline" id="photoTimeline">
+            <!-- 照片将通过 JavaScript 动态加载 -->
+        </div>
+        
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <span>加载更多精彩照片...</span>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>© 2024 我的照片墙 - 记录生活的美好时刻</p>
+        </div>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html> 

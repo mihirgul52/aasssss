@@ -1,0 +1,609 @@
+/* 导入基础变量 */
+:root {
+    --primary-color: #3B82F6;
+    --primary-dark: #2563EB;
+    --primary-light: #60A5FA;
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #1c62c6;
+    --border: #E2E8F0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --radius-sm: 0.375rem;
+    --radius: 0.5rem;
+    --radius-lg: 0.75rem;
+}
+
+/* 全局样式 */
+body {
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部样式 */
+.site-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.upload-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 时间线容器 */
+.timeline-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+/* 统计信息 */
+.timeline-header {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.timeline-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.stat-item i {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.stat-item span:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* 照片卡片 */
+.photo-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.photo-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photo-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.photo-content {
+    position: relative;
+}
+
+.photo-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.photo-description {
+    padding: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 加载动画 */
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 页脚 */
+.site-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* 动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1rem;
+    }
+    
+    .timeline-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .photo-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* 选择文本效果 */
+::selection {
+    background: var(--primary-light);
+    color: white;
+}
+
+/* 照片展示区域 */
+.timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 减小照片间距 */
+    justify-content: flex-start; /* 从左向右排列 */
+    padding: 20px 0;
+}
+
+/* 照片卡片样式 */
+.photo-card {
+    flex: 0 0 calc(25% - 15px); /* 每行4张照片 */
+    max-width: calc(25% - 15px);
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 照片容器样式 */
+.photo-content {
+    position: relative;
+    width: 100%;
+    height: 200px; /* 减小照片高度 */
+    overflow: hidden;
+}
+
+.photo-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* 照片描述样式 */
+.photo-description {
+    padding: 12px; /* 减小内边距 */
+    color: var(--text-secondary);
+    font-size: 0.9rem; /* 减小字体大小 */
+    line-height: 1.4;
+    max-height: 60px; /* 限制描述最大高度 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* 照片日期样式 */
+.photo-header {
+    padding: 10px 12px; /* 减小头部内边距 */
+    border-bottom: 1px solid var(--border);
+}
+
+.photo-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ���应式布局 */
+@media (max-width: 1200px) {
+    .photo-card {
+        flex: 0 0 calc(33.333% - 14px); /* 每行3张照片 */
+        max-width: calc(33.333% - 14px);
+    }
+    
+    .photo-content {
+        height: 180px;
+    }
+}
+
+@media (max-width: 900px) {
+    .photo-card {
+        flex: 0 0 calc(50% - 10px); /* 每行2张照片 */
+        max-width: calc(50% - 10px);
+    }
+    
+    .photo-content {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-card {
+        flex: 0 0 100%; /* 每行1张照片 */
+        max-width: 100%;
+    }
+    
+    .photo-content {
+        height: 250px;
+    }
+    
+    .timeline {
+        gap: 15px;
+    }
+}
+
+/* 统计信息样式优化 */
+.timeline-header {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.timeline-stats {
+    gap: 2rem;
+}
+
+.stat-item {
+    font-size: 0.9rem;
+}
+
+.stat-item span:nth-child(2) {
+    font-size: 1.2rem;
+}
+
+/* 搜索栏样式优化 */
+.search-bar {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.date-range {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.date-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* 按钮容器 */
+.search-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto; /* 将按钮推到右边 */
+}
+
+/* 按钮样式优化 */
+#searchBtn, #resetBtn {
+    height: 42px;
+    padding: 0 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+#searchBtn {
+    background: var(--primary-color);
+    color: white;
+}
+
+#resetBtn {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+#searchBtn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+#resetBtn:hover {
+    background: var(--background);
+    border-color: var(--primary-light);
+}
+
+/* 响应式布局优化 */
+@media (max-width: 1024px) {
+    .date-range {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .date-input {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 150px;
+    }
+    
+    .search-buttons {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 640px) {
+    .date-input {
+        flex: 1 1 100%;
+    }
+    
+    .search-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #searchBtn, #resetBtn {
+        width: 100%;
+        justify-content: center;
+        height: 48px;
+    }
+}
+
+/* 动画效果 */
+.search-bar {
+    animation: fadeIn 0.5s ease;
+}
+
+.date-input input[type="date"],
+#searchBtn,
+#resetBtn {
+    transition: all 0.2s ease;
+}
+
+/* 操作栏样式 */
+.action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.select-all {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.select-all input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.select-all label {
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.download-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.download-btn:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.download-btn:not(:disabled):hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+/* 照片卡片勾选样式 */
+.photo-card {
+    position: relative;
+}
+
+.photo-select {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-select input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.photo-card:hover .photo-select {
+    opacity: 1;
+}
+
+.photo-card.selected .photo-select {
+    opacity: 1;
+}
+
+.photo-card.selected::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(59, 130, 246, 0.08),
+        rgba(59, 130, 246, 0.12)
+    );
+    border: 2px solid var(--primary-color);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: var(--radius-lg);
+}
+
+/* 优化选中效果的动画 */
+.photo-card::before {
+    transition: all 0.3s ease;
+}
+
+.photo-card.selected {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+  

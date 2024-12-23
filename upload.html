@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传照片</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1><i class="fas fa-camera-retro"></i> 记录美好时刻</h1>
+            <nav>
+                <a href="index.html" class="view-gallery-btn">
+                    <i class="fas fa-images"></i> 查看相册
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="upload-section">
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                <div class="upload-prompt" id="uploadPrompt">
+                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                    <span class="upload-text">拖放照片到这里</span>
+                    <span class="upload-divider">或</span>
+                    <button id="browseBtn">
+                        <i class="fas fa-folder-open"></i> 选择文件
+                    </button>
+                </div>
+                <div class="preview-area" id="previewArea" style="display: none;">
+                    <div class="preview-grid" id="previewGrid"></div>
+                    <div class="preview-actions">
+                        <button id="uploadBtn" class="upload-action-btn">
+                            <i class="fas fa-cloud-upload-alt"></i> 上传照片
+                        </button>
+                        <button id="cancelBtn" class="cancel-action-btn">
+                            <i class="fas fa-times"></i> 取消
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="upload-details">
+                <div class="date-picker">
+                    <label><i class="fas fa-calendar"></i> 选择日期：</label>
+                    <input type="date" id="photoDate">
+                </div>
+                <div class="note-input">
+                    <label><i class="fas fa-pen"></i> 添加备注：</label>
+                    <textarea id="photoNote" placeholder="请输入照片备注..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div id="uploadSuccess" class="upload-success">
+            <i class="fas fa-check-circle"></i>
+            <span>照片上传成功！</span>
+        </div>
+
+        <div class="gallery-section">
+            <h2><i class="fas fa-images"></i> 最近上传</h2>
+            <div id="photoGallery"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+ 
